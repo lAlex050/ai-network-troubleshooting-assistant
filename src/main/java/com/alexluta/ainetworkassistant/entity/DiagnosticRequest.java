@@ -5,12 +5,12 @@ import com.alexluta.ainetworkassistant.enums.SeverityLevel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
 
+@Builder
+@AllArgsConstructor
 @Entity
 @Table(name = "diagnostic_requests")
 @Getter
