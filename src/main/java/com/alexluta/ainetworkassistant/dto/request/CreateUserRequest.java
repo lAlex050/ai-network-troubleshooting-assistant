@@ -25,7 +25,7 @@ public class CreateUserRequest {
     private String email;
 
     @NotBlank
-    @Pattern(regexp = "^\\+407[0-9]{8}$]")
+    @Pattern(regexp = "^\\+407[0-9]{8}$")
     private String phoneNumber;
 
 }
