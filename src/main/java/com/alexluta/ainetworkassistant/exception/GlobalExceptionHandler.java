@@ -75,4 +75,16 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
     }
 
+    @ExceptionHandler(DiagnosticRequestNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleDiagnosticRequestNotFoundById(DiagnosticRequestNotFoundException ex, HttpServletRequest request){
+        ErrorResponse body = ErrorResponse.builder()
+                .status(HttpStatus.NOT_FOUND.value())
+                .errorCode("DIAGNOSTIC_REQUEST_NOT_FOUND_BY_ID")
+                .errorMessage(ex.getMessage())
+                .timestamp(Instant.now())
+                .path(request.getServletPath())
+                .build();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
 }

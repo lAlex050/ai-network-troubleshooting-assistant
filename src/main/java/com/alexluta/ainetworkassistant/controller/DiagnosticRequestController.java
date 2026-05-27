@@ -33,4 +33,9 @@ public class DiagnosticRequestController {
         return ResponseEntity.status(HttpStatus.OK).body(diagnosticRequestService.getAllDiagnosticsByUserId(userId));
     }
 
+    @GetMapping("/diagnostics/{id}")
+    public ResponseEntity<DiagnosticResponse> getDiagnosticRequestById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(diagnosticRequestService.getDiagnosticById(id));
+    }
+
 }

@@ -6,6 +6,7 @@ import com.alexluta.ainetworkassistant.dto.response.DiagnosticResponse;
 import com.alexluta.ainetworkassistant.entity.DiagnosticRequest;
 import com.alexluta.ainetworkassistant.entity.User;
 import com.alexluta.ainetworkassistant.enums.SeverityLevel;
+import com.alexluta.ainetworkassistant.exception.DiagnosticRequestNotFoundException;
 import com.alexluta.ainetworkassistant.exception.UserNotFoundException;
 import com.alexluta.ainetworkassistant.mapper.DiagnosticRequestMapper;
 import com.alexluta.ainetworkassistant.repository.DiagnosticRequestRepository;
@@ -51,6 +52,15 @@ public class DiagnosticRequestService {
                 return diagnostics.stream()
                 .map(diagnosticRequestMapper::toDto)
                 .toList();
+
+    }
+
+    public DiagnosticResponse getDiagnosticById(Long id){
+
+        DiagnosticRequest diagnostic = diagnosticRequestRepository.findDiagnosticRequestById(id)
+                .orElseThrow(() -> new DiagnosticRequestNotFoundException(id));
+
+        return diagnosticRequestMapper.toDto(diagnostic);
 
     }
 
